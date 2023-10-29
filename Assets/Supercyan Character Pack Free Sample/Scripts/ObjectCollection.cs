@@ -21,9 +21,11 @@ public class ObjectCollection : MonoBehaviour
      * 
      */
     bool done = false;
+    private float timeLimit = 500f;
 
     public void OnGUI()
     {
+        GUI.Box(new Rect(200, 10, 180, 25), "Time Remaining : " + (timeLimit));
         GUI.Box(new Rect(20, 10, 140, 25), "Candy : " + Candy );
         string s = "";
         string label = "Missing Components: ";
@@ -65,6 +67,10 @@ public class ObjectCollection : MonoBehaviour
         }
         GUI.Box(new Rect(20, 40, 150, 30), "<b>"+label+"</b>");
         GUI.Box(new Rect(20,75,150,count*mult), s);
+    }
+    private void Update()
+    {
+        timeLimit -= Time.deltaTime;
     }
     public int Candy
     {
