@@ -11,6 +11,7 @@ public class ZoomControl : MonoBehaviour
     float currentfov = 90f;
     float interlopation = 10f;
     public SimpleSampleCharacterControl store;
+    
     private void Start()
     {
         store = GameObject.Find("Player").GetComponent<SimpleSampleCharacterControl>();

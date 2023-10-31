@@ -149,19 +149,22 @@ public class ObjectCollection : MonoBehaviour
         {
             inWater = true;
         }
-        else
-        {
-            inWater = false;
-        }
         if (collision.gameObject.CompareTag("Car")&& !store.nCar)
         {
             nextToCar = true;
         }
-        else
+        
+
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Car") && !store.nCar)
         {
             nextToCar = false;
         }
-        
-
+        if (collision.gameObject.CompareTag("Water"))
+        {
+            inWater = false;
+        }
     }
 }

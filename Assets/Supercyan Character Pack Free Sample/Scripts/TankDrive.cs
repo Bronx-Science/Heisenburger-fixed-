@@ -10,6 +10,7 @@ public class TankDrive : MonoBehaviour
     private float m_currentH = 0;
     private float m_interpolation = 10f;
     private float mult = 15f;
+    private Vector3 rot;
     private Vector3 m_currentDirection = Vector3.zero;
     void Start()
     {
@@ -29,7 +30,8 @@ public class TankDrive : MonoBehaviour
             float h = Input.GetAxis("Horizontal");
             m_currentV = Mathf.Lerp(m_currentV, v, Time.deltaTime * m_interpolation);
             m_currentH = Mathf.Lerp(m_currentH, h, Time.deltaTime * m_interpolation);
-            transform.Rotate(new Vector3(0, 0.5f*m_currentH, 0));
+            rot.y += 0.4f*m_currentH;
+            transform.localRotation= Quaternion.Euler(0, rot.y, 0);
             Vector3 direction = mult * transform.forward * m_currentV;
             float directionLength = direction.magnitude;
             direction.y = 0;
