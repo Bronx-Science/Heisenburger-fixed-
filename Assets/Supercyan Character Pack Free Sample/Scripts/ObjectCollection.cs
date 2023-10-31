@@ -21,8 +21,22 @@ public class ObjectCollection : MonoBehaviour
      * 
      */
     bool done = false;
+    bool inWater = false;
     private float timeLimit = 500f;
-
+    bool nextToCar = false;
+    public bool Water
+    {
+        get { return inWater; }
+    }
+    public bool Cars
+    {
+        get { return nextToCar; }
+        set
+        {
+            nextToCar = value;
+        }
+    }
+    public SimpleSampleCharacterControl store;
     public void OnGUI()
     {
         GUI.Box(new Rect(200, 10, 180, 25), "Time Remaining : " + (timeLimit));
@@ -67,6 +81,10 @@ public class ObjectCollection : MonoBehaviour
         }
         GUI.Box(new Rect(20, 40, 150, 30), "<b>"+label+"</b>");
         GUI.Box(new Rect(20,75,150,count*mult), s);
+        if (nextToCar)
+        {
+            GUI.Box(new Rect(300, 300, 200, 30), "Press [g] to get in car");
+        }
     }
     private void Update()
     {
@@ -127,6 +145,23 @@ public class ObjectCollection : MonoBehaviour
             collision.gameObject.SetActive(false);
             ingredients[7] = true;
         }
+        if (collision.gameObject.CompareTag("Water"))
+        {
+            inWater = true;
+        }
+        else
+        {
+            inWater = false;
+        }
+        if (collision.gameObject.CompareTag("Car")&& !store.nCar)
+        {
+            nextToCar = true;
+        }
+        else
+        {
+            nextToCar = false;
+        }
+        
 
     }
 }

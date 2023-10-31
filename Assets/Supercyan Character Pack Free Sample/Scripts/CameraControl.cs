@@ -5,11 +5,7 @@ using UnityEngine;
 public class CameraControl : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-    }
+    
     public Vector2 turn;
     [SerializeField]
     [Range(0f, 20f)]
@@ -20,13 +16,31 @@ public class CameraControl : MonoBehaviour
     // Update is called once per frame
     [SerializeField]
     GameObject obj;
+    public SimpleSampleCharacterControl store;
+    public GameObject car;
+    void Start()
+    {
+        store = GameObject.Find("Player").GetComponent<SimpleSampleCharacterControl>();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
     void Update()
     {
-        transform.position = obj.transform.position;
-        transform.position += new Vector3(0, 1f);
-        turn.x += sensitivityx * Input.GetAxis("Mouse X");
-        turn.y += sensitivityy * Input.GetAxis("Mouse Y");
+        
+        
+            
+            turn.x += sensitivityx * Input.GetAxis("Mouse X");
+            turn.y += sensitivityy * Input.GetAxis("Mouse Y");
 
-        transform.localRotation = Quaternion.Euler(turn.y, turn.x, 0);
+            transform.localRotation = Quaternion.Euler(turn.y, turn.x, 0);
+        if (!store.nCar)
+        {
+            transform.position = obj.transform.position;
+            transform.position += new Vector3(0, 1f);
+        }
+        else
+        {
+            transform.position = car.transform.position+new Vector3(0,2,0);
+        }
     }
 }

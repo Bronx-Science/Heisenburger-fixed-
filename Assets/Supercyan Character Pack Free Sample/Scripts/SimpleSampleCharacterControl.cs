@@ -31,7 +31,7 @@ public class SimpleSampleCharacterControl : MonoBehaviour
     private bool m_isGrounded;
 
     private List<Collider> m_collisions = new List<Collider>();
-    public ObjectCollection CandyStorage;
+    public ObjectCollection Storage;
     private void Awake()
     {
         if (!m_animator) { gameObject.GetComponent<Animator>(); }
@@ -93,19 +93,39 @@ public class SimpleSampleCharacterControl : MonoBehaviour
         if (m_collisions.Count == 0) { m_isGrounded = false; }
     }
     float mult;
+    bool inCar = false;
+    public bool nCar
+    {
+        get { return inCar; }
+    }
     private void Update()
     {
         if (!m_jumpInput && Input.GetKey(KeyCode.Space))
         {
             m_jumpInput = true;
         }
+        if (Input.GetKeyDown("g"))
+        {
+            if (Storage.Cars&&!inCar)
+            {
+                Storage.Cars = false;
+                inCar = true;
+            }else if(inCar){
+                inCar = false;
+                transform.position = car.transform.position;
+            }
+        }
+        if (inCar)
+        {
+            Storage.Cars = false;
+        }
         if (Input.GetKeyDown("f"))
         {
-            CandyStorage.Candy++;
+            Storage.Candy++;
         }
-        if (CandyStorage.Candy > 0 && Input.GetKeyDown("c") && !hyper)
+        if (Storage.Candy > 0 && Input.GetKeyDown("c") && !hyper)
         {
-            CandyStorage.Candy--;
+            Storage.Candy--;
             hyper = true;
             prehyper = true;
             StartCoroutine(noHyper(10f));
@@ -126,13 +146,20 @@ public class SimpleSampleCharacterControl : MonoBehaviour
             mult = 2f;
         }
     }
-
+    public Transform car;
     private void FixedUpdate()
     {
         m_animator.SetBool("Grounded", m_isGrounded);
-
-        DirectUpdate();
-
+        if (!inCar)
+        {
+            DirectUpdate();
+        }
+        else
+        {
+            
+            transform.position =car.transform.position- new Vector3(0,50,0);
+            transform.rotation = car.transform.rotation;
+        }
         m_wasGrounded = m_isGrounded;
         m_jumpInput = false;
     }
@@ -147,8 +174,12 @@ public class SimpleSampleCharacterControl : MonoBehaviour
         float h = Input.GetAxis("Horizontal");
 
         Transform camera = Camera.main.transform;
-
-        if (Input.GetKey(KeyCode.LeftShift) || Input.GetMouseButton(1))
+        if (Storage.Water)
+        {
+            v *= m_walkScale;
+            h *= m_walkScale;
+        }
+        if (Input.GetKey(KeyCode.LeftShift) || Input.GetMouseButton(1) )
         {
             v *= m_walkScale;
             h *= m_walkScale;
