@@ -105,42 +105,42 @@ public class ObjectCollection : MonoBehaviour
             collision.gameObject.SetActive(false);
             Candy++;
         }
-        else if (collision.gameObject.CompareTag("Tomato"))
+        if (collision.gameObject.CompareTag("Tomato"))
         {
             collision.gameObject.SetActive(false);
             ingredients[0] = true;
         }
-        else if (collision.gameObject.CompareTag("Bun"))
+        if (collision.gameObject.CompareTag("Bun"))
         {
             collision.gameObject.SetActive(false);
             ingredients[1] = true;
         }
-        else if (collision.gameObject.CompareTag("Patty"))
+        if (collision.gameObject.CompareTag("Patty"))
         {
             collision.gameObject.SetActive(false);
             ingredients[2] = true;
         }
-        else if (collision.gameObject.CompareTag("Lettuce"))
+        if (collision.gameObject.CompareTag("Lettuce"))
         {
             collision.gameObject.SetActive(false);
             ingredients[3] = true;
         }
-        else if (collision.gameObject.CompareTag("Cheese"))
+        if (collision.gameObject.CompareTag("Cheese"))
         {
             collision.gameObject.SetActive(false);
             ingredients[4] = true;
         }
-        else if (collision.gameObject.CompareTag("Sauce"))
+        if (collision.gameObject.CompareTag("Sauce"))
         {
             collision.gameObject.SetActive(false);
             ingredients[5] = true;
         }
-        else if (collision.gameObject.CompareTag("Onion"))
+        if (collision.gameObject.CompareTag("Onion"))
         {
             collision.gameObject.SetActive(false);
             ingredients[6] = true;
         }
-        else if (collision.gameObject.CompareTag("Pickle"))
+        if (collision.gameObject.CompareTag("Pickle"))
         {
             collision.gameObject.SetActive(false);
             ingredients[7] = true;
@@ -149,19 +149,16 @@ public class ObjectCollection : MonoBehaviour
         {
             inWater = true;
         }
-        else
-        {
-            inWater = false;
-        }
         if (collision.gameObject.CompareTag("Car")&& !store.nCar)
         {
             nextToCar = true;
         }
-        else
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Water"))
         {
-            nextToCar = false;
+            inWater = false;
         }
-        
-
     }
 }
