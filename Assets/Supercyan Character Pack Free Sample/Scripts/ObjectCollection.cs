@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ObjectCollection : MonoBehaviour
 {
+    [SerializeField] AudioSource itemget;
+    [SerializeField] AudioSource candyget;
     //tomato, bun, patty, lettuce, cheese, sauce, onion
     string[] ing = { "Tomato", "Burger Bun", "Patty", "Lettuce", "Cheese", "Sauce", "Onion", "Pickles" };
     private bool[] ingredients = new bool[8];
@@ -83,7 +85,7 @@ public class ObjectCollection : MonoBehaviour
         GUI.Box(new Rect(20,75,150,count*mult), s);
         if (nextToCar)
         {
-            GUI.Box(new Rect(300, 300, 200, 30), "Press [g] to get in car");
+            GUI.Box(new Rect(250, 300, 200, 30), "Press [g] to get in car");
         }
     }
     private void Update()
@@ -104,63 +106,70 @@ public class ObjectCollection : MonoBehaviour
         {
             collision.gameObject.SetActive(false);
             Candy++;
+            candyget.Play();
         }
-        if (collision.gameObject.CompareTag("Tomato"))
+        else if (collision.gameObject.CompareTag("Tomato"))
         {
             collision.gameObject.SetActive(false);
             ingredients[0] = true;
+            itemget.Play();
         }
-        if (collision.gameObject.CompareTag("Bun"))
+        else if (collision.gameObject.CompareTag("Bun"))
         {
             collision.gameObject.SetActive(false);
             ingredients[1] = true;
+            itemget.Play();
         }
-        if (collision.gameObject.CompareTag("Patty"))
+        else if (collision.gameObject.CompareTag("Patty"))
         {
             collision.gameObject.SetActive(false);
             ingredients[2] = true;
+            itemget.Play();
         }
-        if (collision.gameObject.CompareTag("Lettuce"))
+        else if (collision.gameObject.CompareTag("Lettuce"))
         {
             collision.gameObject.SetActive(false);
             ingredients[3] = true;
+            itemget.Play();
         }
-        if (collision.gameObject.CompareTag("Cheese"))
+        else if (collision.gameObject.CompareTag("Cheese"))
         {
             collision.gameObject.SetActive(false);
             ingredients[4] = true;
+            itemget.Play();
         }
-        if (collision.gameObject.CompareTag("Sauce"))
+        else if (collision.gameObject.CompareTag("Sauce"))
         {
             collision.gameObject.SetActive(false);
             ingredients[5] = true;
+            itemget.Play();
         }
-        if (collision.gameObject.CompareTag("Onion"))
+        else if (collision.gameObject.CompareTag("Onion"))
         {
             collision.gameObject.SetActive(false);
             ingredients[6] = true;
+            itemget.Play();
         }
-        if (collision.gameObject.CompareTag("Pickle"))
+        else if (collision.gameObject.CompareTag("Pickle"))
         {
             collision.gameObject.SetActive(false);
             ingredients[7] = true;
+            itemget.Play();
         }
         if (collision.gameObject.CompareTag("Water"))
         {
             inWater = true;
         }
-        if (collision.gameObject.CompareTag("Car")&& !store.nCar)
+        if (collision.gameObject.CompareTag("Car") && !store.nCar)
         {
             nextToCar = true;
         }
-        
-
     }
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Car") && !store.nCar)
+        if (collision.gameObject.CompareTag("Car"))
         {
-            inWater = false;
+            nextToCar = false;
         }
         if (collision.gameObject.CompareTag("Water"))
         {

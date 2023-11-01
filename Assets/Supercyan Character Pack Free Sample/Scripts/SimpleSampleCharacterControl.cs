@@ -30,6 +30,14 @@ public class SimpleSampleCharacterControl : MonoBehaviour
 
     private bool m_isGrounded;
 
+    public bool ground
+    {
+        get { return m_isGrounded; }
+        set
+        {
+            m_isGrounded = value;
+        }
+    }
     private List<Collider> m_collisions = new List<Collider>();
     public ObjectCollection Storage;
     private void Awake()
@@ -40,18 +48,22 @@ public class SimpleSampleCharacterControl : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        ContactPoint[] contactPoints = collision.contacts;
-        for (int i = 0; i < contactPoints.Length; i++)
+        if (!(collision.gameObject.CompareTag("Candy")|| collision.gameObject.CompareTag("Tomato")|| collision.gameObject.CompareTag("Bun")|| collision.gameObject.CompareTag("Patty")|| collision.gameObject.CompareTag("Lettuce")|| collision.gameObject.CompareTag("Cheese")|| collision.gameObject.CompareTag("Sauce")|| collision.gameObject.CompareTag("Onion")|| collision.gameObject.CompareTag("Pickle")))
         {
-            if (Vector3.Dot(contactPoints[i].normal, Vector3.up) > 0.5f)
+            ContactPoint[] contactPoints = collision.contacts;
+            for (int i = 0; i < contactPoints.Length; i++)
             {
-                if (!m_collisions.Contains(collision.collider))
+                if (Vector3.Dot(contactPoints[i].normal, Vector3.up) > 0.5f)
                 {
-                    m_collisions.Add(collision.collider);
+                    if (!m_collisions.Contains(collision.collider))
+                    {
+                        m_collisions.Add(collision.collider);
+                    }
+                    m_isGrounded = true;
                 }
-                m_isGrounded = true;
             }
         }
+
     }
 
     private void OnCollisionStay(Collision collision)
@@ -91,6 +103,7 @@ public class SimpleSampleCharacterControl : MonoBehaviour
             m_collisions.Remove(collision.collider);
         }
         if (m_collisions.Count == 0) { m_isGrounded = false; }
+
     }
     float mult;
     bool inCar = false;
@@ -212,8 +225,8 @@ public class SimpleSampleCharacterControl : MonoBehaviour
             else {
                 transform.rotation = Quaternion.LookRotation(m_currentDirection);
             }
-            transform.position += m_currentDirection * m_moveSpeed * Time.deltaTime;
-
+            //transform.position += m_currentDirection * m_moveSpeed * Time.deltaTime;
+            m_rigidBody.velocity = m_currentDirection*2+new Vector3(0,m_rigidBody.velocity.y,0);
             m_animator.SetFloat("MoveSpeed", direction.magnitude);
         }
 
@@ -227,9 +240,10 @@ public class SimpleSampleCharacterControl : MonoBehaviour
     private void JumpingAndLanding()
     {
         bool jumpCooldownOver = (Time.time - m_jumpTimeStamp) >= m_minJumpInterval;
-
+        
         if (jumpCooldownOver && m_isGrounded && m_jumpInput)
         {
+
             m_jumpTimeStamp = Time.time;
             m_rigidBody.AddForce(Vector3.up * m_jumpForce, ForceMode.Impulse);
         }
