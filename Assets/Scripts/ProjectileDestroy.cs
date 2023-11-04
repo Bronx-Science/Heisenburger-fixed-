@@ -30,7 +30,7 @@ public class ProjectileDestroy : MonoBehaviour
                     if (collision.gameObject.GetComponent<ObjectCollection>().Health <= 0)
                     {
                         collision.gameObject.GetComponent<ObjectCollection>().Health = 0;
-                        Destroy(collision.gameObject);
+                        //Destroy(collision.gameObject);
                     }
                 }
             }

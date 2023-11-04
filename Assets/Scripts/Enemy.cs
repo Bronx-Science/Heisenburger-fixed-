@@ -56,7 +56,7 @@ public class Enemy : MonoBehaviour
         if (playerInAttackRange && playerInSightRange)
         {
             AttackPlayer();
-            Debug.Log("Atk");
+            //Debug.Log("Atk");
         }
     }
     private void Patroling()
@@ -96,7 +96,7 @@ public class Enemy : MonoBehaviour
 
         transform.LookAt(player);
 
-        if (!alreadyAttacked)
+        if (!alreadyAttacked && Time.timeScale != 0f)
         {
             ///Attack code here
             Rigidbody rb = Instantiate(projectile, transform.position+transform.forward*0.5f+transform.up*0.3f, Quaternion.identity).GetComponent<Rigidbody>();
