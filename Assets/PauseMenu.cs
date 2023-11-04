@@ -12,7 +12,7 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        if (Player.GetComponent<ObjectCollection>().Health <= 0)
+        if (Player.GetComponent<ObjectCollection>().Health > 0)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
