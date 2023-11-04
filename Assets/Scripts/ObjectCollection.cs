@@ -26,6 +26,12 @@ public class ObjectCollection : MonoBehaviour
     bool inWater = false;
     private float timeLimit = 500f;
     bool nextToCar = false;
+    public int hp;
+    public int Health
+    {
+        get { return hp; }
+        set { hp = value; }
+    }
     public bool Water
     {
         get { return inWater; }
@@ -43,6 +49,7 @@ public class ObjectCollection : MonoBehaviour
     {
         GUI.Box(new Rect(200, 10, 180, 25), "Time Remaining : " + (timeLimit));
         GUI.Box(new Rect(20, 10, 140, 25), "Candy : " + Candy );
+        GUI.Box(new Rect(550, 10, 100, 25), "Health : " + Health);
         string s = "";
         string label = "Missing Components: ";
         float count = 0;

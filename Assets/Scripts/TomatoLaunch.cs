@@ -4,10 +4,10 @@ using System.Collections;
 public class TomatoLaunch : MonoBehaviour
 {
     public GameObject projectile;
-    public float speed = 10f;
-    float loadRate = 0.5f;
+    public float speed = 15f;
+    float loadRate = 0.001f;
     float timeRemaining;
-    public float up = 5f;
+    public float up = 1.5f;
     private void Update()
     {
         timeRemaining -= Time.deltaTime;

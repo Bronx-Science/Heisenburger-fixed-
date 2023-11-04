@@ -28,10 +28,15 @@ public class Enemy : MonoBehaviour
 
     private void Awake()
     {
-        player = GameObject.Find("Player").transform;
+        player = GameObject.Find("look point").transform;
         agent = GetComponent<NavMeshAgent>();
     }
-
+    public int hp;
+    public int Health
+    {
+        get { return hp; }
+        set { hp = value; }
+    }
     private void Update()
     {
         //Check for sight and attack range
@@ -94,9 +99,10 @@ public class Enemy : MonoBehaviour
         if (!alreadyAttacked)
         {
             ///Attack code here
-            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
+            Rigidbody rb = Instantiate(projectile, transform.position+transform.forward*0.5f+transform.up*0.3f, Quaternion.identity).GetComponent<Rigidbody>();
+            rb.AddForce(transform.forward * 15f, ForceMode.Impulse);
+            rb.AddForce(transform.up * Random.Range(0,2), ForceMode.Impulse);
+            rb.AddForce(transform.right * Random.Range(-0.6f, 0.6f), ForceMode.Impulse);
             ///End of attack code
 
             alreadyAttacked = true;

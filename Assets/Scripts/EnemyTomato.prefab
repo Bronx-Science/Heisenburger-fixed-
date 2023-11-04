@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 4433878306872079431}
   - component: {fileID: 8665341961249774319}
   - component: {fileID: 5125339430123958707}
-  - component: {fileID: 6348363417625235536}
+  - component: {fileID: -4083577629990262110}
   m_Layer: 0
   m_Name: EnemyTomato
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -134,7 +134,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &6348363417625235536
+--- !u!114 &-4083577629990262110
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -146,3 +146,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99a242a536fedf446a2533c4883d3499, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  obj: Enemy
+  enemy: Player

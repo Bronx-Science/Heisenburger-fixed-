@@ -48,7 +48,7 @@ public class SimpleSampleCharacterControl : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (!(collision.gameObject.CompareTag("Candy")|| collision.gameObject.CompareTag("Tomato")|| collision.gameObject.CompareTag("Bun")|| collision.gameObject.CompareTag("Patty")|| collision.gameObject.CompareTag("Lettuce")|| collision.gameObject.CompareTag("Cheese")|| collision.gameObject.CompareTag("Sauce")|| collision.gameObject.CompareTag("Onion")|| collision.gameObject.CompareTag("Pickle")))
+        if (!(collision.gameObject.CompareTag("Projectile")||collision.gameObject.CompareTag("Candy")|| collision.gameObject.CompareTag("Tomato")|| collision.gameObject.CompareTag("Bun")|| collision.gameObject.CompareTag("Patty")|| collision.gameObject.CompareTag("Lettuce")|| collision.gameObject.CompareTag("Cheese")|| collision.gameObject.CompareTag("Sauce")|| collision.gameObject.CompareTag("Onion")|| collision.gameObject.CompareTag("Pickle")))
         {
             ContactPoint[] contactPoints = collision.contacts;
             for (int i = 0; i < contactPoints.Length; i++)
@@ -111,6 +111,7 @@ public class SimpleSampleCharacterControl : MonoBehaviour
     {
         get { return inCar; }
     }
+    private float fov;
     private void Update()
     {
         if (!m_jumpInput && Input.GetKey(KeyCode.Space))
@@ -147,15 +148,16 @@ public class SimpleSampleCharacterControl : MonoBehaviour
         if (hyper)
         {
             mult = 5f;
-            Camera.main.fieldOfView += 30;
-
+            fov=Camera.main.fieldOfView + 20;
+            Camera.main.fieldOfView= Mathf.Lerp(Camera.main.fieldOfView, fov, Time.deltaTime * m_interpolation);
         }
         else
         {
             if (prehyper)
             {
                 prehyper = false;
-                Camera.main.fieldOfView -= 30;
+                fov = Camera.main.fieldOfView - 20;
+                Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, fov, Time.deltaTime * m_interpolation);
             }
             mult = 2f;
         }

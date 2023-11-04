@@ -17,6 +17,7 @@ TagManager:
   - Water
   - Car
   - floor
+  - Projectile
   layers:
   - Default
   - TransparentFX
