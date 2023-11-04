@@ -101,8 +101,8 @@ public class Enemy : MonoBehaviour
             ///Attack code here
             Rigidbody rb = Instantiate(projectile, transform.position+transform.forward*0.5f+transform.up*0.3f, Quaternion.identity).GetComponent<Rigidbody>();
             rb.AddForce(transform.forward * 15f, ForceMode.Impulse);
-            rb.AddForce(transform.up * Random.Range(0,2), ForceMode.Impulse);
-            rb.AddForce(transform.right * Random.Range(-0.6f, 0.6f), ForceMode.Impulse);
+            rb.AddForce(transform.up * Random.Range(0,23)*0.1f, ForceMode.Impulse);
+            rb.AddForce(transform.right * Random.Range(-15f, 15f)*0.1f, ForceMode.Impulse);
             ///End of attack code
 
             alreadyAttacked = true;
