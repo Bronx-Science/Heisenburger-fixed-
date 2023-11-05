@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting.Antlr3.Runtime;
@@ -12,6 +13,7 @@ public class gameoverscreen : MonoBehaviour
     public GameObject Player;
     public AudioSource MainTheme;
     public AudioSource GameOverTheme;
+    Boolean gameoverMusic = false;
     // Update is called once per frame
     void Update()
     {
@@ -24,7 +26,12 @@ public class gameoverscreen : MonoBehaviour
     void Unalive()
     {
         MainTheme.volume = 0;
-        GameOverTheme.Play();
+        if (gameoverMusic == false) 
+        {
+            GameOverTheme.Play();
+            gameoverMusic = true;
+        }
+        
         gaemoverMenuUI.SetActive(true);
         Time.timeScale = 0.1f;
         Wait();

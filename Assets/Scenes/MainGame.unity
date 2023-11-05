@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fc7904196cb7fc4ea714b43b7fa6356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 4924409598745960524, guid: 31c55c1874ca8dd43ab9a1b953dca1dc, type: 3}
+  projectile: {fileID: 1296309345384908991, guid: e7545604f9d9ab04b88dbef7d97f38a0, type: 3}
   speed: 10
   up: 3
 --- !u!1001 &201089631
@@ -4331,7 +4331,7 @@ MonoBehaviour:
   health: 100
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 5
-  timeBetweenAttacks: 0.001
+  timeBetweenAttacks: 1.5
   projectile: {fileID: 807140030058336463, guid: 4ecb4b110e4a296409ce2186b4bb735b, type: 3}
   sightRange: 20
   attackRange: 9
