@@ -10,7 +10,6 @@ public class Enemy : MonoBehaviour
 
     public LayerMask whatIsGround, whatIsPlayer;
 
-    public float health;
 
     //Patroling
     public Vector3 walkPoint;
@@ -31,7 +30,7 @@ public class Enemy : MonoBehaviour
         player = GameObject.Find("look point").transform;
         agent = GetComponent<NavMeshAgent>();
     }
-    public int hp;
+    public int hp=100;
     public int Health
     {
         get { return hp; }
@@ -114,16 +113,7 @@ public class Enemy : MonoBehaviour
         alreadyAttacked = false;
     }
 
-    public void TakeDamage(int damage)
-    {
-        health -= damage;
-
-        if (health <= 0) Invoke(nameof(DestroyEnemy), 0.5f);
-    }
-    private void DestroyEnemy()
-    {
-        Destroy(gameObject);
-    }
+    
 
     private void OnDrawGizmosSelected()
     {
