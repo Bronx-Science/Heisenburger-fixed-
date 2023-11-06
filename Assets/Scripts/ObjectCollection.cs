@@ -88,8 +88,8 @@ public class ObjectCollection : MonoBehaviour
                 count -= 0.2f; 
             }
         }
-        GUI.Label(new Rect(20, 40, 150, 30), "<b>"+label+"</b>");
-        GUI.Label(new Rect(20,75,150,count*mult), s);
+        GUI.Box(new Rect(20, 40, 150, 30), "<b>"+label+"</b>");
+        GUI.Box(new Rect(20,75,150,count*mult), s);
         if (nextToCar)
         {
             GUI.Box(new Rect(250, 300, 200, 30), "Press [g] to get in car");
