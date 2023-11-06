@@ -10,6 +10,8 @@ public class StartMenu : MonoBehaviour
     // Start is called before the first frame update void Start()
     private void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         Button start = start_button.GetComponent<Button>();
         Button close = close_button.GetComponent<Button>();
         Button instructions = instr_button.GetComponent<Button>();
@@ -17,7 +19,9 @@ public class StartMenu : MonoBehaviour
 
     public void game_start()
     {
+        Time.timeScale = 1f;
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainGame");
+
     }
     public void game_istr()
     {

@@ -76,6 +76,7 @@ public class ObjectCollection : MonoBehaviour
         {
             s = "All ingredients obtained!\nHead to the kitchen!";
             done = true;
+            Debug.Log(done);
             count = 2;
         }
         else

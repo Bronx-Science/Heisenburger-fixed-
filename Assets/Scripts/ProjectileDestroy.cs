@@ -19,6 +19,7 @@ public class ProjectileDestroy : MonoBehaviour
             {
                 if (enemy.Equals("Enemy")) 
                 {
+
                     collision.gameObject.GetComponent<Enemy>().Health--;
                     if (collision.gameObject.GetComponent<Enemy>().Health <= 0)
                     {

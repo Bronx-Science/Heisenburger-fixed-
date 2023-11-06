@@ -10,6 +10,8 @@ public class gameoverscreen : MonoBehaviour
     // Start is called before the first frame update
     public static bool Unalived = false;
     public GameObject gaemoverMenuUI;
+    public GameObject WinCondition;
+    public GameObject button;
     public GameObject Player;
     public AudioSource MainTheme;
     public AudioSource GameOverTheme;
@@ -34,7 +36,10 @@ public class gameoverscreen : MonoBehaviour
     }
     void Win()
     {
-
+        MainTheme.volume = 0;
+        WinCondition.SetActive(true);
+        button.SetActive(true);
+        Time.timeScale = 0f;
     }
     void Unalive()
     {
@@ -46,6 +51,7 @@ public class gameoverscreen : MonoBehaviour
         }
         
         gaemoverMenuUI.SetActive(true);
+        button.SetActive(true);
         Time.timeScale = 0.1f;
         Wait();
         Time.timeScale = 0f;
