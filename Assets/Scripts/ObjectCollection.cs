@@ -27,6 +27,14 @@ public class ObjectCollection : MonoBehaviour
     private float timeLimit = 500f;
     bool nextToCar = false;
     public int hp;
+    public float Timer
+    {
+        get { return timeLimit; }
+    }
+    public bool win
+    {
+        get { return done; }
+    }
     public int Health
     {
         get { return hp; }

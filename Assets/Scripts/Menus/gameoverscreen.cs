@@ -13,15 +13,28 @@ public class gameoverscreen : MonoBehaviour
     public GameObject Player;
     public AudioSource MainTheme;
     public AudioSource GameOverTheme;
+    ObjectCollection check;
     Boolean gameoverMusic = false;
     // Update is called once per frame
+    private void Awake()
+    {
+        check = Player.GetComponent<ObjectCollection>();
+    }
     void Update()
     {
-        if (Player.GetComponent<ObjectCollection>().Health <= 0) 
+        if (check.Health <= 0||check.Timer<=0) 
         {
             Player.GetComponent<SimpleSampleCharacterControl>().m_moveSpeed = 0;
             Unalive();
+        }else if (check.win)
+        {
+            Player.GetComponent<SimpleSampleCharacterControl>().m_moveSpeed = 0;
+            Win();
         }
+    }
+    void Win()
+    {
+
     }
     void Unalive()
     {

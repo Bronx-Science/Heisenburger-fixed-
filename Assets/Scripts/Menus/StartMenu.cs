@@ -1,24 +1,31 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 public class StartMenu : MonoBehaviour
 {
-    private void Update()
+    public Button start_button, close_button, instr_button;
+
+    // Start is called before the first frame update void Start()
+    private void Start()
     {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-    }
-    public void PlayGame()
-    {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene(1);
-        
+        Button start = start_button.GetComponent<Button>();
+        Button close = close_button.GetComponent<Button>();
+        Button instructions = instr_button.GetComponent<Button>();
     }
 
-    public void CloseGame()
+    public void game_start()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainGame");
+    }
+    public void game_istr()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("burger-controls");
+    }
+    public void game_exit()
     {
         Application.Quit();
     }
+
 }
