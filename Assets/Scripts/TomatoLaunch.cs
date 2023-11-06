@@ -10,13 +10,17 @@ public class TomatoLaunch : MonoBehaviour
     public float up = 1.5f;
     private void Update()
     {
-        timeRemaining -= Time.deltaTime;
-        if (Input.GetMouseButtonDown(0) && timeRemaining <= 0)
+        if (Time.timeScale != 0f) 
         {
-            timeRemaining = loadRate;
-            ShootProjectile();
-            //GetComponent<AudioSource>().Play();
+            timeRemaining -= Time.deltaTime;
+            if (Input.GetMouseButtonDown(0) && timeRemaining <= 0)
+            {
+                timeRemaining = loadRate;
+                ShootProjectile();
+                //GetComponent<AudioSource>().Play();
+            }
         }
+            
     }
     void ShootProjectile()
     {

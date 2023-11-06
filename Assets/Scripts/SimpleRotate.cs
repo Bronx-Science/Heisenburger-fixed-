@@ -17,8 +17,12 @@ public class SimpleRotate : MonoBehaviour
     void Start()
     {
         store = GameObject.Find("Player").GetComponent<SimpleSampleCharacterControl>();
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        if (Time.timeScale != 0f) 
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+            
     }
     void Update()
     {

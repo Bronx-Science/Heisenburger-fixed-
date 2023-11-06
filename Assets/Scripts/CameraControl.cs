@@ -20,27 +20,37 @@ public class CameraControl : MonoBehaviour
     public GameObject car;
     void Start()
     {
-        store = GameObject.Find("Player").GetComponent<SimpleSampleCharacterControl>();
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+            store = GameObject.Find("Player").GetComponent<SimpleSampleCharacterControl>();
+
     }
     void Update()
     {
-        
-        
-            
-            turn.x += sensitivityx * Input.GetAxis("Mouse X");
-            turn.y += sensitivityy * Input.GetAxis("Mouse Y");
-
-            transform.localRotation = Quaternion.Euler(turn.y, turn.x, 0);
-        if (!store.nCar)
+        if (Time.timeScale == 0f)
         {
-            transform.position = obj.transform.position;
-            transform.position += new Vector3(0, 1f);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
         else
         {
-            transform.position = car.transform.position+new Vector3(0,2,0);
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
+
+        if (Time.timeScale != 0f)
+        {
+            turn.x += sensitivityx * Input.GetAxis("Mouse X");
+            turn.y += sensitivityy * Input.GetAxis("Mouse Y");
+            transform.localRotation = Quaternion.Euler(turn.y, turn.x, 0);
+            if (!store.nCar)
+            {
+                transform.position = obj.transform.position;
+                transform.position += new Vector3(0, 1f);
+            }
+            else
+            {
+                transform.position = car.transform.position + new Vector3(0, 2, 0);
+            }
+        }
+            
     }
 }
