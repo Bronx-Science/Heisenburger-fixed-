@@ -7,12 +7,10 @@ public class CameraControl : MonoBehaviour
     // Start is called before the first frame update
     
     public Vector2 turn;
-    [SerializeField]
-    [Range(0f, 20f)]
-    float sensitivityx;
-    [SerializeField]
-    [Range(0f, 20f)]
-    public float sensitivityy;
+
+    float sensitivityx=SenseX.sensitivityx;
+
+    public float sensitivityy=SenseY.sensitivityy;
     // Update is called once per frame
     [SerializeField]
     GameObject obj;
@@ -25,6 +23,8 @@ public class CameraControl : MonoBehaviour
     }
     void Update()
     {
+        sensitivityy = SenseY.sensitivityy;
+        sensitivityx = SenseX.sensitivityx;
         if (Time.timeScale == 0f)
         {
             Cursor.lockState = CursorLockMode.None;
