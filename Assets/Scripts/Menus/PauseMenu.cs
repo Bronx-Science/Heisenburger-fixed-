@@ -5,11 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    public static bool Paused = false;
+    public bool Paused = false;
 
     public GameObject pauseMenuUI;
     public GameObject Player;
-
     void Update()
     {
         if (Player.GetComponent<ObjectCollection>().Health > 0)

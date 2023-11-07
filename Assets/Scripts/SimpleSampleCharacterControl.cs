@@ -40,6 +40,7 @@ public class SimpleSampleCharacterControl : MonoBehaviour
     }
     private List<Collider> m_collisions = new List<Collider>();
     public ObjectCollection Storage;
+    
     private void Awake()
     {
         if (!m_animator) { gameObject.GetComponent<Animator>(); }
@@ -142,6 +143,10 @@ public class SimpleSampleCharacterControl : MonoBehaviour
         {
             Storage.Candy--;
             hyper = true;
+            if (Difficult.slideVal != 4)
+            {
+                Storage.hp += 2;
+            }
             prehyper = true;
             StartCoroutine(noHyper(10f));
         }

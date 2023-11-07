@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour
     public float walkPointRange;
 
     //Attacking
-    public float timeBetweenAttacks;
+    float timeBetweenAttacks= 0.001f+(4-Difficult.slideVal)*0.4f;
     bool alreadyAttacked;
     public GameObject projectile;
 
@@ -27,17 +27,33 @@ public class Enemy : MonoBehaviour
 
     private void Awake()
     {
+        if (Difficult.slideVal == 4)
+        {
+            GetComponent<NavMeshAgent>().speed = 10f;
+        }
         player = GameObject.Find("look point").transform;
         agent = GetComponent<NavMeshAgent>();
     }
-    public int hp=100;
+    public int hp=(int)Difficult.slideVal*5;
+    public AudioSource dmg;
+    public AudioClip death;
     public int Health
     {
         get { return hp; }
-        set { hp = value; }
+        set {
+            if (hp == 1)
+            {
+                AudioSource.PlayClipAtPoint(death,transform.position);
+            }
+            else
+            {
+                dmg.Play();
+            }
+            hp = value; }
     }
     private void Update()
     {
+
         //Check for sight and attack range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
@@ -97,11 +113,16 @@ public class Enemy : MonoBehaviour
 
         if (!alreadyAttacked && Time.timeScale != 0f)
         {
+            float accuracy = (1 / Difficult.slideVal) * (1 / Difficult.slideVal);
+            if (Difficult.slideVal == 4)
+            {
+                accuracy *= 0.001f;
+            }
             ///Attack code here
             Rigidbody rb = Instantiate(projectile, transform.position+transform.forward*0.5f+transform.up*0.3f, Quaternion.identity).GetComponent<Rigidbody>();
             rb.AddForce(transform.forward * 15f, ForceMode.Impulse);
             rb.AddForce(transform.up * Random.Range(0,23)*0.1f, ForceMode.Impulse);
-            rb.AddForce(transform.right * Random.Range(-15f, 15f)*0.1f, ForceMode.Impulse);
+            rb.AddForce(transform.right * Random.Range(-15f, 15f)*0.1f*accuracy, ForceMode.Impulse);
             ///End of attack code
 
             alreadyAttacked = true;
@@ -115,11 +136,5 @@ public class Enemy : MonoBehaviour
 
     
 
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, sightRange);
-    }
+
 }

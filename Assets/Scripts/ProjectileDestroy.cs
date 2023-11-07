@@ -6,6 +6,7 @@ public class ProjectileDestroy : MonoBehaviour
 {
     public string obj;
     public string enemy;
+    
     // Start is called before the first frame update
     private void OnCollisionEnter(Collision collision)
     {
@@ -24,6 +25,7 @@ public class ProjectileDestroy : MonoBehaviour
                     if (collision.gameObject.GetComponent<Enemy>().Health <= 0)
                     {
                         Destroy(collision.gameObject);
+                        
                     }
                 }
                 if (enemy.Equals("Player"))
@@ -31,6 +33,7 @@ public class ProjectileDestroy : MonoBehaviour
                     collision.gameObject.GetComponent<ObjectCollection>().Health--;
                     if (collision.gameObject.GetComponent<ObjectCollection>().Health <= 0)
                     {
+
                         collision.gameObject.GetComponent<ObjectCollection>().Health = 0;
                         //Destroy(collision.gameObject);
                     }
@@ -40,4 +43,5 @@ public class ProjectileDestroy : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+ 
 }

@@ -26,7 +26,19 @@ public class ObjectCollection : MonoBehaviour
     bool inWater = false;
     private float timeLimit = 500f;
     bool nextToCar = false;
-    public int hp;
+
+    public int hp=1;
+    public PauseMenu pauseState;
+    public AudioClip death;
+    private void Awake()
+    {
+        hp = 20-(((int)Difficult.slideVal-1)*6);
+        if (Difficult.slideVal == 4)
+        {
+            hp = 1;
+        }
+        pauseState = GameObject.Find("Pause").GetComponent<PauseMenu>();
+    }
     public float Timer
     {
         get { return timeLimit; }
@@ -38,7 +50,12 @@ public class ObjectCollection : MonoBehaviour
     public int Health
     {
         get { return hp; }
-        set { hp = value; }
+        set {
+            if (hp == 1)
+            {
+                AudioSource.PlayClipAtPoint(death, transform.position);
+            }
+            hp = value; }
     }
     public bool Water
     {
@@ -76,7 +93,6 @@ public class ObjectCollection : MonoBehaviour
         {
             s = "All ingredients obtained!\nHead to the kitchen!";
             done = true;
-            Debug.Log(done);
             count = 2;
         }
         else
@@ -99,7 +115,7 @@ public class ObjectCollection : MonoBehaviour
         }
         GUI.Box(new Rect(20, 40, 150, 30), "<b>"+label+"</b>");
         GUI.Box(new Rect(20,75,150,count*mult), s);
-        if (nextToCar)
+        if (nextToCar&& !pauseState.Paused&& hp>0 && Timer>0)
         {
             GUI.Box(new Rect(250, 300, 200, 30), "Press [g] to get in car");
         }
