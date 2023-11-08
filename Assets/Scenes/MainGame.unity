@@ -3868,6 +3868,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4efb9b990e28b0142a7247c65c5d6b82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 64
   carstore: {fileID: 0}
   rb: {fileID: 1702821383}
 --- !u!65 &1702821389

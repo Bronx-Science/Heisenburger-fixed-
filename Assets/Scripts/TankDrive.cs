@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TankDrive : MonoBehaviour
 {
+    public LayerMask whatIsGround;
     // Start is called before the first frame update
     public SimpleSampleCharacterControl carstore;
     private float m_currentV = 0;
@@ -21,6 +22,8 @@ public class TankDrive : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Physics.Raycast(transform.position, -transform.up, 0.01f, whatIsGround))
+            rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.y);
         if (!carstore.nCar)
         {
             rb.AddForce(-rb.velocity * 0.6f, ForceMode.Acceleration);
