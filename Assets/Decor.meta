@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Decor.meta
 guid: 2c8d2af394a7ba54dbeaa1a8c7062f0f
+========
+guid: 654bd71cced340a47b65a73f72cc50a1
+>>>>>>>> 16c2413f7fa66ad90c4b3eae21006c14e878cd7e:Assets/Decor/Materials.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

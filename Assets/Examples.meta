@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Examples.meta
 guid: 079761c6417c65d44a88a042092b094a
+========
+guid: 62fbf2ffda5b7b941993b572f0acbfad
+>>>>>>>> 16c2413f7fa66ad90c4b3eae21006c14e878cd7e:Assets/Examples/Editor.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

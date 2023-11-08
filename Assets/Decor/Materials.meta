@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Decor/Materials.meta
 guid: 654bd71cced340a47b65a73f72cc50a1
+========
+guid: 88dbb0c0f4f5c7d48b99434f8f2bb112
+>>>>>>>> 16c2413f7fa66ad90c4b3eae21006c14e878cd7e:Assets/Decor/SFX/Enemy Sounds.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
