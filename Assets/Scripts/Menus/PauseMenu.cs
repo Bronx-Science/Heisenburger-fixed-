@@ -13,7 +13,7 @@ public class PauseMenu : MonoBehaviour
     {
         if (Player.GetComponent<ObjectCollection>().Health > 0)
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown("1"))
             {
                 if (Paused)
                 {

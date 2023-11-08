@@ -118,7 +118,7 @@ public class ObjectCollection : MonoBehaviour
         GUI.Box(new Rect(20,75,150,count*mult), s);
         if (nextToCar&& !pauseState.Paused&& hp>0 && Timer>0)
         {
-            GUI.Box(new Rect(250, 300, 200, 30), "Press [g] to get in car");
+            GUI.Box(new Rect(550, 600, 200, 30), "Press [g] to get in car");
         }
     }
     private void Update()
