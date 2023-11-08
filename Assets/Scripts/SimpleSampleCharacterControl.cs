@@ -178,7 +178,7 @@ public class SimpleSampleCharacterControl : MonoBehaviour
         else
         {
             
-            transform.position =car.transform.position- new Vector3(0,50,0);
+            transform.position =car.transform.position+ new Vector3(0,0.16f,0)+car.forward*0.85f;
             transform.rotation = car.transform.rotation;
         }
         m_wasGrounded = m_isGrounded;

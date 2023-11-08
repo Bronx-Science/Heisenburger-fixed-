@@ -18,6 +18,8 @@ TagManager:
   - Car
   - floor
   - Projectile
+  - Kitchen
+  - Death
   layers:
   - Default
   - TransparentFX
