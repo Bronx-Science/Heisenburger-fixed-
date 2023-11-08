@@ -135,10 +135,10 @@ public class SimpleSampleCharacterControl : MonoBehaviour
         {
             Storage.Cars = false;
         }
-        if (Input.GetKeyDown("f"))
+        /*if (Input.GetKeyDown("f"))
         {
             Storage.Candy++;
-        }
+        }*/
         if (Storage.Candy > 0 && Input.GetKeyDown("c") && !hyper)
         {
             Storage.Candy--;

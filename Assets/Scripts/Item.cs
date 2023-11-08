@@ -8,6 +8,7 @@ public class Item : MonoBehaviour
     Vector3 pos;
     Rigidbody rb;
     public LayerMask whatIsGround;
+    bool floor = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +27,10 @@ public class Item : MonoBehaviour
             rb.velocity = new Vector3(0, -1, 0);
         if (Physics.Raycast(transform.position, -transform.up, 0.5f, whatIsGround))
             rb.velocity = new Vector3(0, -0.1f, 0);
+        if (floor)
+        {
+            rb.velocity = new Vector3(0, 0, 0);
+        }
         //sparkle.Play();
         if (Time.timeScale != 0f)
         {
@@ -39,7 +44,7 @@ public class Item : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("floor"))
         {
-            rb.velocity = new Vector3(0, 0, 0);
+            floor = true;
         }
     }
 
