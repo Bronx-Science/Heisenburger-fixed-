@@ -7,7 +7,7 @@ public class NoisePlay : MonoBehaviour
     public AudioSource dmg, death, main;
 
     public AudioSource battle;
-    public bool inBattle = false;
+    public static bool inBattle = false;
     bool battleplay = false;
     bool wait = false;
     private void Awake()
@@ -18,6 +18,7 @@ public class NoisePlay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(inBattle);
         if (inBattle)
         {
             main.volume = 0;

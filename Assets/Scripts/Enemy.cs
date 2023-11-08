@@ -25,8 +25,10 @@ public class Enemy : MonoBehaviour
     //States
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
-    public NoisePlay noise;
+    public NoisePlay  noise;
     public GameObject mesh;
+    public static int look=0;
+    public bool looking = false;
     private void Awake()
     {
         noise = GameObject.Find("Play EnemyNoise").GetComponent<NoisePlay>();
@@ -60,13 +62,23 @@ public class Enemy : MonoBehaviour
         //Check for sight and attack range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
-        if (playerInSightRange)
+        if (playerInSightRange && !looking)
         {
-            noise.inBattle = true;
+            look++;
+            looking = true;
+        }
+        else if ((!playerInSightRange && looking))
+        {
+            look--;
+            looking = false;
+        }
+        if (look > 0)
+        {
+            NoisePlay.inBattle = true;
         }
         else
         {
-            noise.inBattle = false;
+            NoisePlay.inBattle = false;
         }
         if (!playerInSightRange && !playerInAttackRange)
         {

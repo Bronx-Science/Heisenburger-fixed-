@@ -75,7 +75,7 @@ public class ObjectCollection : MonoBehaviour
     {
         GUI.Box(new Rect(200, 10, 180, 25), "Time Remaining : " + (timeLimit));
         GUI.Box(new Rect(20, 10, 140, 25), "Candy : " + Candy );
-        GUI.Box(new Rect(550, 10, 100, 25), "Health : " + Health);
+        GUI.Box(new Rect(Screen.width-100, 10, 100, 25), "Health : " + Health);
         string s = "";
         string label = "Missing Components: ";
         float count = 0;
@@ -118,7 +118,7 @@ public class ObjectCollection : MonoBehaviour
         GUI.Box(new Rect(20,75,150,count*mult), s);
         if (nextToCar&& !pauseState.Paused&& hp>0 && Timer>0)
         {
-            GUI.Box(new Rect(550, 600, 200, 30), "Press [g] to get in car");
+            GUI.Box(new Rect(Screen.width/2, Screen.height-30, 200, 30), "Press [g] to get in car");
         }
     }
     private void Update()

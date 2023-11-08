@@ -152,7 +152,7 @@ public class SimpleSampleCharacterControl : MonoBehaviour
         }
         if (hyper)
         {
-            mult = 5f;
+            mult = 4f;
             fov=Camera.main.fieldOfView + 20;
             Camera.main.fieldOfView= Mathf.Lerp(Camera.main.fieldOfView, fov, Time.deltaTime * m_interpolation);
         }

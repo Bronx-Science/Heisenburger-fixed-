@@ -31,7 +31,7 @@ public class ProjectileDestroy : MonoBehaviour
                     if (collision.gameObject.GetComponent<Enemy>().Health <= 0)
                     {
                         Destroy(collision.gameObject);
-                        
+                        Enemy.look--;
                     }
                 }
                 if (enemy.Equals("Player"))
