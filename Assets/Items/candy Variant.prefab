@@ -163,6 +163,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: aa2bfc8187f7c0148a3af314860cce50, type: 3}
       insertIndex: -1
       addedObject: {fileID: 796192151272290820}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: aa2bfc8187f7c0148a3af314860cce50, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5984328149561911805}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: aa2bfc8187f7c0148a3af314860cce50, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5430641540712781408}
   m_SourcePrefab: {fileID: 100100000, guid: aa2bfc8187f7c0148a3af314860cce50, type: 3}
 --- !u!4 &3824042790066439641 stripped
 Transform:
@@ -207,3 +213,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47af0100aa4b1a242b66bbb0f148b12e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 64
+--- !u!54 &5984328149561911805
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4493020146645704547}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &5430641540712781408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4493020146645704547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7469da99f45e164da323f0b2ef45004, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 1244078217713892874, guid: f9e4bbbbc73c19145a35914233507497, type: 3}

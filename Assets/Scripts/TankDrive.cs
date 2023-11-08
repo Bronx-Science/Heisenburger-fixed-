@@ -47,10 +47,7 @@ public class TankDrive : MonoBehaviour
                 m_currentDirection = Vector3.Slerp(m_currentDirection, direction, Time.deltaTime * m_interpolation);
                 //transform.position += m_currentDirection * 2 * Time.deltaTime;
                 rb.velocity = m_currentDirection*1.3f+new Vector3(0,rb.velocity.y,0);
-                if (rb.velocity.y > 0)
-                {
-                    rb.velocity -= new Vector3(0,2f,0);
-                }
+   
             }
         }
     }

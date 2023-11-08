@@ -85,6 +85,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 07b1c008a3573dd4bbff09359b84a639, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2489210474468123673}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 07b1c008a3573dd4bbff09359b84a639, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1371727754582276771}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 07b1c008a3573dd4bbff09359b84a639, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1582635860890773241}
   m_SourcePrefab: {fileID: 100100000, guid: 07b1c008a3573dd4bbff09359b84a639, type: 3}
 --- !u!1 &3722230032344457183 stripped
 GameObject:
@@ -126,6 +132,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47af0100aa4b1a242b66bbb0f148b12e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 64
+--- !u!54 &1371727754582276771
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3722230032344457183}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &1582635860890773241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3722230032344457183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7469da99f45e164da323f0b2ef45004, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 1244078217713892874, guid: f9e4bbbbc73c19145a35914233507497, type: 3}
 --- !u!4 &4099354087879787877 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 07b1c008a3573dd4bbff09359b84a639, type: 3}
