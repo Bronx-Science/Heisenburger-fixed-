@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 258f6191500bf174b91c20a459151b59, type: 2}
+  - {fileID: 2100000, guid: e41ee8e0fe082e84fa526cf2624614c3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -149,7 +149,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obj: Enemy
   enemy: Player
-  death: {fileID: 6006893110000159625}
+  store: {fileID: 0}
+  hp: {fileID: 0}
 --- !u!82 &6006893110000159625
 AudioSource:
   m_ObjectHideFlags: 0

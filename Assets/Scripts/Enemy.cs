@@ -70,13 +70,13 @@ public class Enemy : MonoBehaviour
         }
         if (!playerInSightRange && !playerInAttackRange)
         {
-            Debug.Log("Patrol");
+            //Debug.Log("Patrol");
             Patroling();
         }
         if (playerInSightRange && !playerInAttackRange)
         {
             ChasePlayer();
-            Debug.Log("Chase");
+            //Debug.Log("Chase");
         }
         if (playerInAttackRange && playerInSightRange)
         {
