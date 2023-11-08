@@ -4,3 +4,5 @@ In an alternate reality of "Breaking Bad," Walter White and his partner Jesse Pi
 🚗 Drive around the map in your El Camino!
 🍅 Throw "tomatos" at any of Gus's henchmen trying to hunt you down!
 ⏰ Collect all the ingredients before Gus can win by selling Mike's sandwichs!
+💻 Use WASD to move and click to shoot
+🍬 If you pick up a candy, press C
