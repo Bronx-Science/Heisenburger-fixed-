@@ -6,7 +6,13 @@ public class ProjectileDestroy : MonoBehaviour
 {
     public string obj;
     public string enemy;
-    
+    public SimpleSampleCharacterControl store;
+    public ObjectCollection hp;
+    private void Awake()
+    {
+        store = GameObject.Find("Player").GetComponent<SimpleSampleCharacterControl>();
+        hp = GameObject.Find("Player").GetComponent<ObjectCollection>();
+    }
     // Start is called before the first frame update
     private void OnCollisionEnter(Collision collision)
     {
@@ -36,6 +42,19 @@ public class ProjectileDestroy : MonoBehaviour
 
                         collision.gameObject.GetComponent<ObjectCollection>().Health = 0;
                         //Destroy(collision.gameObject);
+                    }
+                }
+                
+            }
+            if (store.nCar && collision.gameObject.CompareTag("Car") && !obj.Equals("Player"))
+            {
+                int num = (int)Random.Range(0, 10);
+                if (num < 3)
+                {
+                    hp.Health--;
+                    if (hp.Health < 0)
+                    {
+                        hp.Health = 0;
                     }
                 }
             }

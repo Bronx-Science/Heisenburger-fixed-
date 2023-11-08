@@ -15,11 +15,15 @@ public class gameoverscreen : MonoBehaviour
     public GameObject Player;
     public AudioSource MainTheme;
     public AudioSource GameOverTheme;
+    public AudioSource winm;
     ObjectCollection check;
+    NoisePlay stuff;
+    Boolean winner = false;
     Boolean gameoverMusic = false;
     // Update is called once per frame
     private void Awake()
     {
+        stuff = GameObject.Find("Play EnemyNoise").GetComponent<NoisePlay>();
         check = Player.GetComponent<ObjectCollection>();
     }
     void Update()
@@ -28,7 +32,7 @@ public class gameoverscreen : MonoBehaviour
         {
             Player.GetComponent<SimpleSampleCharacterControl>().m_moveSpeed = 0;
             Unalive();
-        }else if (check.win)
+        }else if (check.Win)
         {
             Player.GetComponent<SimpleSampleCharacterControl>().m_moveSpeed = 0;
             Win();
@@ -36,7 +40,13 @@ public class gameoverscreen : MonoBehaviour
     }
     void Win()
     {
+        stuff.battle.Stop();
         MainTheme.volume = 0;
+        if (!winner)
+        {
+            winm.Play();
+            winner = true;
+        }
         WinCondition.SetActive(true);
         button.SetActive(true);
         Time.timeScale = 0f;
@@ -44,6 +54,7 @@ public class gameoverscreen : MonoBehaviour
     void Unalive()
     {
         MainTheme.volume = 0;
+        stuff.battle.Stop();
         if (gameoverMusic == false) 
         {
             GameOverTheme.Play();

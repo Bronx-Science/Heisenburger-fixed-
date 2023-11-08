@@ -23,8 +23,9 @@ public class ObjectCollection : MonoBehaviour
      * 
      */
     bool done = false;
+    bool win = false;
     bool inWater = false;
-    private float timeLimit = 500f;
+    private float timeLimit = 1000f;
     bool nextToCar = false;
 
     public int hp=1;
@@ -43,9 +44,9 @@ public class ObjectCollection : MonoBehaviour
     {
         get { return timeLimit; }
     }
-    public bool win
+    public bool Win
     {
-        get { return done; }
+        get { return win; }
     }
     public int Health
     {
@@ -195,6 +196,14 @@ public class ObjectCollection : MonoBehaviour
         if (collision.gameObject.CompareTag("Car") && !store.nCar)
         {
             nextToCar = true;
+        }
+        if (collision.gameObject.CompareTag("Kitchen") && done)
+        {
+            win = true;
+        }
+        if (collision.gameObject.CompareTag("Death"))
+        {
+            Health = 0;
         }
     }
     private void OnCollisionExit(Collision collision)

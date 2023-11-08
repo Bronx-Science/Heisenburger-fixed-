@@ -1,4 +1,5 @@
 
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,7 +8,7 @@ public class Enemy : MonoBehaviour
     public NavMeshAgent agent;
 
     public Transform player;
-
+    public Animator animator;
     public LayerMask whatIsGround, whatIsPlayer;
 
 
@@ -24,9 +25,12 @@ public class Enemy : MonoBehaviour
     //States
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
-
+    public NoisePlay noise;
+    public GameObject mesh;
     private void Awake()
     {
+        noise = GameObject.Find("Play EnemyNoise").GetComponent<NoisePlay>();
+        animator = mesh.GetComponent<Animator>();
         if (Difficult.slideVal == 4)
         {
             GetComponent<NavMeshAgent>().speed = 10f;
@@ -35,19 +39,18 @@ public class Enemy : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
     }
     public int hp=(int)Difficult.slideVal*5;
-    public AudioSource dmg;
-    public AudioClip death;
+
     public int Health
     {
         get { return hp; }
         set {
             if (hp == 1)
             {
-                AudioSource.PlayClipAtPoint(death,transform.position);
+                noise.death.Play();
             }
             else
             {
-                dmg.Play();
+                noise.dmg.Play();
             }
             hp = value; }
     }
@@ -57,7 +60,14 @@ public class Enemy : MonoBehaviour
         //Check for sight and attack range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
-
+        if (playerInSightRange)
+        {
+            noise.inBattle = true;
+        }
+        else
+        {
+            noise.inBattle = false;
+        }
         if (!playerInSightRange && !playerInAttackRange)
         {
             Debug.Log("Patrol");
@@ -76,10 +86,21 @@ public class Enemy : MonoBehaviour
     }
     private void Patroling()
     {
-        if (!walkPointSet) SearchWalkPoint();
+        if (!walkPointSet)
+        {
+            animator.SetBool("Walk", false);
+            animator.SetBool("SprintJump", false);
+            animator.SetBool("SprintSlide", false);
+            SearchWalkPoint();
+        }
 
         if (walkPointSet)
+        {
+            animator.SetBool("Walk", true);
+            animator.SetBool("SprintJump", false);
+            animator.SetBool("SprintSlide", false);
             agent.SetDestination(walkPoint);
+        }
 
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
@@ -87,6 +108,7 @@ public class Enemy : MonoBehaviour
         if (distanceToWalkPoint.magnitude < 1f)
             walkPointSet = false;
     }
+    
     private void SearchWalkPoint()
     {
         //Calculate random point in range
@@ -101,12 +123,19 @@ public class Enemy : MonoBehaviour
 
     private void ChasePlayer()
     {
+        animator.SetBool("Walk", false);
+        animator.SetBool("SprintJump", true);
+        animator.SetBool("SprintSlide", false);
         agent.SetDestination(player.position);
     }
 
     private void AttackPlayer()
     {
         //Make sure enemy doesn't move
+
+        animator.SetBool("Walk", false);
+        animator.SetBool("SprintJump", false);
+        animator.SetBool("SprintSlide", false);
         agent.SetDestination(transform.position);
 
         transform.LookAt(player);
