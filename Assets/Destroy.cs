@@ -19,7 +19,7 @@ public class Destroy : MonoBehaviour
     {
         if (!collision.gameObject.CompareTag("Player"))
         {
-            Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false);
         }
     }
 }

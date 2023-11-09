@@ -23,6 +23,8 @@ public class Item : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Physics.Raycast(transform.position, -transform.up, 50f, whatIsGround))
+            rb.velocity = new Vector3(0, -10, 0);
         if (Physics.Raycast(transform.position, -transform.up, 5f, whatIsGround))
             rb.velocity = new Vector3(0, -1, 0);
         if (Physics.Raycast(transform.position, -transform.up, 0.5f, whatIsGround))

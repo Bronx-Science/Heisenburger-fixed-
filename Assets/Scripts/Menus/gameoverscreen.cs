@@ -32,8 +32,10 @@ public class gameoverscreen : MonoBehaviour
         {
             Player.GetComponent<SimpleSampleCharacterControl>().m_moveSpeed = 0;
             Unalive();
+            Enemy.look = 0;
         }else if (check.Win)
         {
+            Enemy.look = 0;
             Player.GetComponent<SimpleSampleCharacterControl>().m_moveSpeed = 0;
             Win();
         }
