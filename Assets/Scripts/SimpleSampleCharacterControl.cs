@@ -111,6 +111,10 @@ public class SimpleSampleCharacterControl : MonoBehaviour
     public bool nCar
     {
         get { return inCar; }
+        set
+        {
+            inCar = value;
+        }
     }
     private float fov;
     private void Update()

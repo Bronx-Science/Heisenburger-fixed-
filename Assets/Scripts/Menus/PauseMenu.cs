@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -9,8 +10,17 @@ public class PauseMenu : MonoBehaviour
     public static int inverse=1;
     public GameObject pauseMenuUI;
     public GameObject Player;
+    public GameObject toggler;
     void Update()
     {
+        if (toggler.GetComponent<Toggle>().isOn)
+        {
+            inverse = 1;
+        }
+        else
+        {
+            inverse = -1;
+        }
         if (Player.GetComponent<ObjectCollection>().Health > 0)
         {
             if (Input.GetKeyDown("1"))

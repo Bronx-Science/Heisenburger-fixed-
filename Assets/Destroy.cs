@@ -5,9 +5,10 @@ using UnityEngine;
 public class Destroy : MonoBehaviour
 {
     // Start is called before the first frame update
+    SimpleSampleCharacterControl ch;
     void Start()
     {
-        
+        ch = GameObject.Find("Player").GetComponent<SimpleSampleCharacterControl>();
     }
 
     // Update is called once per frame
@@ -64,6 +65,10 @@ public class Destroy : MonoBehaviour
             collision.gameObject.SetActive(false);
             ObjectCollection.ingredients[7] = true;
 
+        }else if (collision.gameObject.CompareTag("Car"))
+        {
+            collision.gameObject.SetActive(false);
+            ch.nCar = false;
         }
         else if (!collision.gameObject.CompareTag("Player"))
         {
