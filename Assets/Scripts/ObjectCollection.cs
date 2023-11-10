@@ -8,7 +8,7 @@ public class ObjectCollection : MonoBehaviour
     [SerializeField] AudioSource candyget;
     //tomato, bun, patty, lettuce, cheese, sauce, onion
     string[] ing = { "Tomato", "Burger Bun", "Patty", "Lettuce", "Cheese", "Sauce", "Onion", "Pickles" };
-    private bool[] ingredients = new bool[8];
+    public static bool[] ingredients = new bool[8];
     private int candy = 0;
     /* Ingredients:
      * tomato
@@ -25,7 +25,7 @@ public class ObjectCollection : MonoBehaviour
     bool done = false;
     bool win = false;
     bool inWater = false;
-    private float timeLimit = 1000f;
+    private float timeLimit = 1500f;
     bool nextToCar = false;
 
     public int hp=1;

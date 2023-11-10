@@ -41,7 +41,7 @@ public class CameraControl : MonoBehaviour
             turn.x += sensitivityx * Input.GetAxis("Mouse X");
             turn.y += sensitivityy * Input.GetAxis("Mouse Y");
             Mathf.Clamp(turn.y, -90, 90);
-            transform.localRotation = Quaternion.Euler(turn.y, turn.x, 0);
+            transform.localRotation = Quaternion.Euler(PauseMenu.inverse*turn.y, turn.x, 0);
             if (!store.nCar)
             {
                 transform.position = obj.transform.position;

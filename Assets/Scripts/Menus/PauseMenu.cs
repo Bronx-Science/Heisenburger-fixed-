@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public bool Paused = false;
-
+    public static int inverse;
     public GameObject pauseMenuUI;
     public GameObject Player;
     void Update()
@@ -27,7 +27,17 @@ public class PauseMenu : MonoBehaviour
         }
            
     }
-
+    public void inversey(bool tog)
+    {
+        if (tog)
+        {
+            inverse = 1;
+        }
+        else
+        {
+            inverse = -1;
+        }
+    }
     public void Resume()
     {
         pauseMenuUI.SetActive(false);

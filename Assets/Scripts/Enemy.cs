@@ -35,7 +35,7 @@ public class Enemy : MonoBehaviour
         animator = mesh.GetComponent<Animator>();
         if (Difficult.slideVal == 4)
         {
-            GetComponent<NavMeshAgent>().speed = 10f;
+            GetComponent<NavMeshAgent>().speed = 12f;
         }
         player = GameObject.Find("look point").transform;
         agent = GetComponent<NavMeshAgent>();
