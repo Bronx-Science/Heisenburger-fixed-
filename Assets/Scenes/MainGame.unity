@@ -867,7 +867,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 128080385}
   m_LocalRotation: {x: -0.050570916, y: 0.024910545, z: -0.0010062109, w: -0.9984093}
-  m_LocalPosition: {x: 345.2552, y: -948.82117, z: -340.66577}
+  m_LocalPosition: {x: 349.79047, y: -939.5907, z: -431.4475}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4995,6 +4995,7 @@ MonoBehaviour:
   Paused: 0
   pauseMenuUI: {fileID: 1998558816}
   Player: {fileID: 1824340805622721}
+  toggler: {fileID: 1946794305}
 --- !u!114 &2056139355
 MonoBehaviour:
   m_ObjectHideFlags: 0
