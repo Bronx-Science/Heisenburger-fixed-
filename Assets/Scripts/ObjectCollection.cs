@@ -25,7 +25,7 @@ public class ObjectCollection : MonoBehaviour
     bool done = false;
     bool win = false;
     bool inWater = false;
-    private float timeLimit = 1500f;
+    private float timeLimit = 2100f;
     bool nextToCar = false;
 
     public int hp=1;
